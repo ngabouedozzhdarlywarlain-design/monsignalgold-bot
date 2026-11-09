@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # METS TON TOKEN ICI ENTRE LES GUILLEMETS
-TOKEN = "METS_TON_TOKEN_ICI"
+TOKEN = "9219912118:AAFLPblVtf0NNx-TjJ9Sn7KzenT2dRTiUuU"
 
 logging.basicConfig(level=logging.INFO)
 
