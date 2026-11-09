@@ -1,0 +1,43 @@
+import logging
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
+# METS TON TOKEN ICI ENTRE LES GUILLEMETS
+TOKEN = "METS_TON_TOKEN_ICI"
+
+logging.basicConfig(level=logging.INFO)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🤖 Bot Signal Gold activé !\n\n"
+        "Commandes :\n"
+        "/signal - Recevoir un signal GOLD\n"
+        "/prix - Voir le prix de l'or\n"
+        "/aide - Aide"
+    )
+
+async def signal(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "📊 SIGNAL GOLD / XAUUSD\n\n"
+        "➡️ Direction : ACHAT\n"
+        "🎯 Entrée : 2650.00\n"
+        "✅ TP1 : 2660.00\n"
+        "✅ TP2 : 2675.00\n"
+        "❌ SL : 2635.00\n\n"
+        "⚠️ Ceci n'est pas un conseil financier."
+    )
+
+async def prix(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("💰 Prix GOLD (XAUUSD) : 2650.00 $ - à connecter à une API plus tard.")
+
+async def aide(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Tape /signal pour un signal, /prix pour le prix.")
+
+if __name__ == "__main__":
+    app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("signal", signal))
+    app.add_handler(CommandHandler("prix", prix))
+    app.add_handler(CommandHandler("aide", aide))
+    print("Bot lancé...")
+    app.run_polling()
